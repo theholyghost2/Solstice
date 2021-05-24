@@ -1,6 +1,6 @@
-use Solstice::Entity;
+use Solstice::Shadax;
 
-class Solstice::Shadax is Solstice::Entity {
+class Solstice::JumpingShadax is Solstice::Shadax {
       submethod BUILD(:$x, :$y, :$w, :$h) {
       		$!x = $x;
 		$!y = $y;
