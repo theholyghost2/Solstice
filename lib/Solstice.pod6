@@ -1,0 +1,7 @@
+=begin Solstice 
+
+=head1 Solstice Game 
+
+This is an implementation of Solstice, a NES game.
+
+=end

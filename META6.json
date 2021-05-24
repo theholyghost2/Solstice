@@ -1,0 +1,30 @@
+{
+        "perl" : "6.c",
+        "name" : "Solstice",
+        "auth" : "CPAN:HOLYGHOST",
+        "api" : "1",
+        "version" : "0.1.1",
+        "description" : "A game written in perl6.",
+        "authors" : [ "The Holy Ghost" ],
+        "license" : "General Public License 3, Artistic-2.0",
+        "provides" : {
+            "Solstice::Controller" : "lib/Solstice/Controller.pm6",
+            "Solstice::Entity" : "lib/Solstice/Entity.pm6",
+            "Solstice::MainScreen" : "lib/Solstice/MainScreen.pm6",
+            "Solstice::Model" : "lib/Solstice/Model.pm6",
+            "Solstice::Room" : "lib/Solstice/Room.pm6",
+            "Solstice::Shadax" : "lib/Solstice/Shadax.pm6",
+            "Solstice::SolsticeModel" : "lib/Solstice/SolsticeModel.pm6",
+            "Solstice::SolsticeView" : "lib/Solstice/SolsticeView.pm6",
+            "Solstice::View" : "lib/Solstice/View.pm6"
+        },
+        "depends" : [ ],
+        "build-depends" : [ ],
+        "test-depends" : [ ],
+        "resources" : [ ],
+        "tags": [
+          "Solstice"
+        ],
+        "source-url" : "http://cpan.metacpan.org/authors/id/H/HO/HOLYGHOST/Perl6/Solstice-0.1.1.tar.gz"
+
+}

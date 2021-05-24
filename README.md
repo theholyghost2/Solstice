@@ -1,2 +1,1 @@
-# Solstice
-NES Solstice game
+# NES Solstice game
