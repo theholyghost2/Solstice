@@ -9,7 +9,7 @@ constant $sdl-lib = 'SDL2';
 SDL_Init(VIDEO);
 
 $window = SDL_CreateWindow(
-		"Pagan Visions Roguelike - SDL 2",
+		"Solstice : Underdark",
 		SDL_WINDOWPOS_CENTERED_MASK, SDL_WINDOWPOS_CENTERED_MASK,
 		$w, $h,
 		SHOWN
