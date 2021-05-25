@@ -94,7 +94,7 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method blit() {
 	      ### FIXME blit things on x,y
 
-	      my $destrect = SDL_Rect.new($!x, $!y, $!width, $!height);
+	      my $destrect = SDL_Rect.new($!x, $!y + $!zposition, $!width, $!height); ### NOTE + $zpos
 
 	      if ($lastmove.^name == 'LeftMove') {
 	      	 my $image = $leftmoveimageslib.getImage();
