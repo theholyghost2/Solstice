@@ -27,7 +27,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 		$!renderer = $renderer;
 		
 		$!currentroom = new Room1();
-		$!shadax = new Shadax(100,100,24,24);
+		$!shadax = new Shadax(100,100,24,24,$renderer);
 	}
 
       multi method loopOnce($event) {

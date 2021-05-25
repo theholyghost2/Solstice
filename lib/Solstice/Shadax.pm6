@@ -5,11 +5,19 @@ use Solstice::RightMove;
 use Solstice::UpMove;
 use Solstice::DownMove;
 
+use Solstice::ImageLoopLibrary;
+
 class Solstice::Shadax is Solstice::Entity {
 
       has $!lastmove;
+      has $!renderer;
 
-      submethod BUILD(:$x, :$y, :$w, :$h) {
+      has $!leftmoveimageslib;
+      has $!rightmoveimageslib;
+      has $!upmoveimageslib;
+      has $!downmoveimageslib;
+
+      submethod BUILD(:$x, :$y, :$w, :$h, :$renderer) {
       		$!x = $x;
 		$!y = $y;
 
@@ -19,6 +27,14 @@ class Solstice::Shadax is Solstice::Entity {
 		$!lastmove = Nil;
 
 		$!zposition = 0; ### FIXME dispatch tilemap zpos
+
+		$!renderer = $renderer;
+		
+		$!leftmoveimageslib = ImageLoopLibrary($renderer);
+		$!rightmoveimageslib = ImageLoopLibrary($renderer);
+		$!upmoveimageslib = ImageLoopLibrary($renderer);
+		$!downmoveimageslib = ImageLoopLibrary($renderer);
+		### FIXME add images to image loop libs
 	}
 
 	### main colliding method
@@ -73,6 +89,20 @@ class Solstice::Shadax is Solstice::Entity {
 	}
 
 	multi method jump() {} ### FIXME
-	multi method magiccrystal() {} ### FIXME 
+	multi method magiccrystal() {} ### FIXME
+
+	multi method blit() {
+	      ### FIXME blit things
+	      if ($lastmove.name == 'LeftMove') {
+	      	 $leftmoveimageslib.getImage();	      	 
+	      }	else if ($lastmove.name == 'RightMove') {
+	      	 $rightmoveimageslib.getImage();	      	 
+	      } else if ($lastmove.name == 'UpMove') {
+	      	 $upmoveimageslib.getImage();	      	 
+	      } else if ($lastmove.name == 'DownMove') {
+	      	 $downmoveimageslib.getImage();	      	 
+	      }
+
+	}
 }
       		
