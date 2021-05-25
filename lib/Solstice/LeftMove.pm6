@@ -4,7 +4,7 @@ class Soltice::LeftMove is Move {
 
       submethod BUILD() {
       		$!dx = -1;
-		$!dy = -0.5;
+		$!dy = -1;
       }
 
 }

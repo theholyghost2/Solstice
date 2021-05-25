@@ -14,7 +14,7 @@ class Solstice::Tilemap1 is Tilemap {
 
       	submethod BUILD(:$renderer) {
 
-		  $!tilewidth = 92;
+		  $!tilewidth = 96;
 		  $!tileheight = 48;
 
 		  $!mapwidth = 5;

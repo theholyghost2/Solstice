@@ -96,19 +96,19 @@ class Solstice::Shadax is Solstice::Entity {
 	      if ($lastmove.name == 'LeftMove') {
 	      	 my $image = $leftmoveimageslib.getImage();
 	      	 $image.x = $!x;
-		 $image.y = $!y;
+		 $image.y = $!y / 2; ### for blitting y
 	      }	else if ($lastmove.name == 'RightMove') {
 	      	 my $image = $rightmoveimageslib.getImage();	      	 
 	      	 $image.x = $!x;
-		 $image.y = $!y;
+		 $image.y = $!y / 2; ### for blitting y
 	      } else if ($lastmove.name == 'UpMove') {
 	      	 my $image = $upmoveimageslib.getImage();
 		 $image.x = $!x;
-		 $image.y = $!y;
+		 $image.y = $!y / 2; ### for blitting y
 	      } else if ($lastmove.name == 'DownMove') {
 	      	 my $image = $downmoveimageslib.getImage();
 		 $image.x = $!x;
-		 $image.y = $!y;
+		 $image.y = $!y / 2; ### for blitting y
 	      }
 
 	}
