@@ -48,7 +48,7 @@ class Solstice::Tilemap1 is Tilemap {
 	multi method collideShadax($shadax) {
 	     for @tiles -> @l {
 	     	 for @l -> $el {
-		     if ($el.collideXY($shadax)) {
+		     if ($el.collideDiamond($shadax) and $el.collideXY($shadax)) {
 		     	return $el;
 			  }
 		     }
