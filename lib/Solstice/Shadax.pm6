@@ -94,20 +94,20 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method blit() {
 	      ### FIXME blit things on x,y
 
-	      my $rect = new SDL_Rect($!x, $y, $width, $!height)
+	      my $destrect = new SDL_Rect($!x, $!y, $width, $!height)
 
 	      if ($lastmove.name == 'LeftMove') {
 	      	 my $image = $leftmoveimageslib.getImage();
-		 SDL_UpdateTexture($image, $rect, $image, $image.width * $image.height);
+		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
 	      }	else if ($lastmove.name == 'RightMove') {
 	      	 my $image = $rightmoveimageslib.getImage();
-		 SDL_UpdateTexture($image, $rect, $image, $image.width * $image.height);
+		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
 	      } else if ($lastmove.name == 'UpMove') {
 	      	 my $image = $upmoveimageslib.getImage();
-		 SDL_UpdateTexture($image, $rect, $image, $image.width * $image.height);
+		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
 	      } else if ($lastmove.name == 'DownMove') {
 	      	 my $image = $downmoveimageslib.getImage();
-		 SDL_UpdateTexture($image, $rect, $image, $image.width * $image.height);
+		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
 	      }
 
 	}

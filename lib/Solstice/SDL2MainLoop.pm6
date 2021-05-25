@@ -31,7 +31,6 @@ class Solstice::SDL2MainLoop is MainLoop {
 	}
 
       method render() {
-
 	### SDL_UpdateTexture($tile, 0, $data, 320*32);
 
 	SDL_SetRenderDrawColor($renderer, 0x0, 0x0, 0x0, 0xff);
