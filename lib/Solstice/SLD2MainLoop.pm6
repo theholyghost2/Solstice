@@ -52,12 +52,16 @@ class Solstice::SDL2MainLoop is MainLoop {
 
 			if ($comm == K_LEFT) {
 			   $!shadax.moveLeft();
+			   $!shadax.collideRoom($!currentroom);
 			} else if ($comm == K_RIGHT) {
 			   $!shadax.moveRight();
+			   $!shadax.collideRoom($!currentroom);
 			} else if ($comm == K_UP) {
 			   $!shadax.moveUp();
+			   $!shadax.collideRoom($!currentroom);
 			} else if ($comm == K_DOWN) {
 			   $!shadax.moveDown();
+			   $!shadax.collideRoom($!currentroom);
 			} else if ($comm == K_X) {
 			   
 			   $!shadax = new JumpingShadax($!shadax.getX(),$!shadax.getY(),$!shadax.getW(),$!shadax.getH());
