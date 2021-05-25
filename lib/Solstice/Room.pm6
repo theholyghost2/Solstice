@@ -16,7 +16,7 @@ class Solstice::Room {
 	      my $currentcollidedtile = $tilemap.collideShadax($shadax);
 
 	      if ($currentcollidedtile != Nil) {
-	      	  ### $shadax.donotmove();
+	      	  $shadax.undoMove();
 	          return $currentcollidedtile;
 	      }
 	}
