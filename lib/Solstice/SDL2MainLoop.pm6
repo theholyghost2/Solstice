@@ -26,8 +26,8 @@ class Solstice::SDL2MainLoop is MainLoop {
       		$!is_running = True;
 		$!renderer = $renderer;
 		
-		$!currentroom = new Room1($renderer);
-		$!shadax = new Shadax(100,100,24,24,$renderer);
+		$!currentroom = Room1.new($renderer);
+		$!shadax = Shadax.new(100,100,24,24,$renderer);
 	}
 
       method render() {
@@ -75,7 +75,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 			   $!shadax.collideRoom($!currentroom);
 			} else if ($comm == K_X) {
 			   
-			   $!shadax = new JumpingShadax($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
+			   $!shadax = JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
 			   $!shadax.jump();
 			   
 		        }### else if ($comm == K_Z) {

@@ -7,8 +7,8 @@ class Solstice::Controller {
       has $!model;
 
       submethod BUILD() {
-      		$!view = new View();
-		$!model = new Model();
+      		$!view = View.new();
+		$!model = Model.new();
 	}
 
 	multi method update() {

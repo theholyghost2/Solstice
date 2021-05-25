@@ -22,7 +22,7 @@ class Solstice::Diamond {
 
 	multi method blit($renderer) {
 	      SDL_UpdateTexture($!image, 0, $!image, $!images.width * $!images.height);
-	      my $destrect = new SDL_Rect($!x, $!y, $!width, $!height);
+	      my $destrect = SDL_Rect.new($!x, $!y, $!width, $!height);
 	      SDL_RenderCopy($renderer, $i!mage, 0, $destrect);
 	}
 

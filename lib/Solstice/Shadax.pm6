@@ -68,22 +68,22 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method setXY($x, $y) { $!x = $x; $!y = $y; }
 
 	multi method moveLeft() {
-	      my $lmove = new LeftMove();
+	      my $lmove = LeftMove.new();
 	      $lastmove = $lmove;
 	      $lmove.move(self);
 	}
 	multi method moveRight() {
-	      my $rmove = new RighttMove();
+	      my $rmove = RighttMove.new();
 	      $lastmove = $rmove;
 	      $rmove.move(self);
 	}
 	multi method moveUp() {
-	      my $umove = new UpMove();
+	      my $umove = UpMove.new();
 	      $lastmove = $umove;
 	      $umove.move(self);
 	}
 	multi method moveDown() {
-	      my $dmove = new DownMove();
+	      my $dmove = DownMove.new();
 	      $lastmove = $dmove;
 	      $dmove.move(self);
 	}
@@ -94,18 +94,18 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method blit() {
 	      ### FIXME blit things on x,y
 
-	      my $destrect = new SDL_Rect($!x, $!y, $!width, $!height);
+	      my $destrect = SDL_Rect.new($!x, $!y, $!width, $!height);
 
-	      if ($lastmove.name == 'LeftMove') {
+	      if ($lastmove.^name == 'LeftMove') {
 	      	 my $image = $leftmoveimageslib.getImage();
 		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      }	else if ($lastmove.name == 'RightMove') {
+	      }	else if ($lastmove.^name == 'RightMove') {
 	      	 my $image = $rightmoveimageslib.getImage();
 		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      } else if ($lastmove.name == 'UpMove') {
+	      } else if ($lastmove.^name == 'UpMove') {
 	      	 my $image = $upmoveimageslib.getImage();
 		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      } else if ($lastmove.name == 'DownMove') {
+	      } else if ($lastmove.^name == 'DownMove') {
 	      	 my $image = $downmoveimageslib.getImage();
 		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
 	      }

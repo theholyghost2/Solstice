@@ -24,7 +24,7 @@ class ImageLoopLibrary {
       }
 
       method getImage() {
-      	     if ($!index >= @!images.elems()) {
+      	     if ($!index >= @!images.elems) {
 	     	$!index = 0;
 	     }
 	     ### FIXME :
