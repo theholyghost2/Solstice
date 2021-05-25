@@ -1,3 +1,4 @@
+use SDL2::Raw;
 use Solstice::SDL2MainLoop;
 
 my int ($w, $h) = 800, 600;

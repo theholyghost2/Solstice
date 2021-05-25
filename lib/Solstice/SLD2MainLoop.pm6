@@ -3,6 +3,8 @@ use Solstice::MainLoop;
 use Solstice::Shadax;
 use Solstice::Room1;
 
+use SDL2::Raw;
+
 class Solstice::SDL2MainLoop is MainLoop {
 
       has $!shadax;
