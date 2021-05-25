@@ -1,6 +1,6 @@
-use Solstice::Diamond;
+use Solstice::FloorDiamond;
 
-class Solstice::FloorDiamond is Diamond {
+class Solstice::OchreFloorDiamond is FloorDiamond {
 
       submethod BUILD(:$x, :$y) {
       		$!x = $x;
@@ -10,8 +10,8 @@ class Solstice::FloorDiamond is Diamond {
 		$!zposition = 0;
 	}
 
-	multi method collideXY($player) {
-	      return $player.collideFloorXY(self);
-	}
+## FIXME multi method collideXY($player) {
+##	      ###$player.collideFloor(self);
+##	}
 
 }

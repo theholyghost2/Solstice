@@ -10,13 +10,8 @@ class Solstice::SlabDiamond is Diamond {
 		$!zposition = $zpos;
 	}
 
-	multi method collideShadax($player) {
-	      return $player.collideSlab(self);
+	multi method collideXY($player) {
+	      return $player.collideSlabXY(self);
 	}
-
-	multi method getX() { return $!x; }
-	multi method getY() { return $!y; }
-	multi method getWidth() { return $!width; }
-	multi method getHeight() { return $!height; }
 
 }

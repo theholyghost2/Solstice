@@ -9,12 +9,12 @@ class Solstice::JumpingShadax is Solstice::Shadax {
 		$!height = $h;
 	}
 
-	multi method collideFloor($floordiamond) {
+	multi method collideFloorXY($floordiamond) {
 	      ### collide with diamond
 	      return False;
 	}
 
-	multi method collideSlab($slabdiamond) {
+	multi method collideSlabXY($slabdiamond) {
 	      ### collide with diamond
 	      return False;
 	}
