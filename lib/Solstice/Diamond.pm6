@@ -46,7 +46,7 @@ class Solstice::Diamond {
 	      my $dx = $x2 - $x1;
 	      my $diff = abs($dy / $dx);
 
-	      if (abs($player.getY() - $y1 - ($d * ($player.getX() - $x1))) > 0) {
+	      if (abs(($d * ($player.getX() - $x1)) - ($player.getY() - $y1)) > 0) {
 	      	 return True;
 	      } else {
 	      	return False;
