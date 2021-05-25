@@ -88,6 +88,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 			}
 		}
 		$!currentroom.blit($renderer);
+		$!shadax.blit();
 		self.render();
       }
 
