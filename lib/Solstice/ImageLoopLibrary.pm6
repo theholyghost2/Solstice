@@ -28,6 +28,6 @@ class ImageLoopLibrary {
 	     	$!index = 0;
 	     }
 	     ### FIXME :
-	     SDL_UpdateTexture(@!images[$index], 0, @!images[$!index], @!images[$!index].width, @!images[!$index].height);
+	     SDL_UpdateTexture(@!images[$index], 0, @!images[$!index], @!images[$!index].width * @!images[!$index].height);
       	     return @!images[$!index++];
       }
