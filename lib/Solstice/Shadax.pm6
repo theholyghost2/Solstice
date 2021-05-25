@@ -65,6 +65,8 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method getWidth() { return $!width; }
   	multi method getHeight() { return $!height; }
 
+	multi method getLastMove() { return $!lastmove; }
+
 	multi method setXY($x, $y) { $!x = $x; $!y = $y; }
 
 	multi method moveLeft() {
