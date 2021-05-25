@@ -30,6 +30,18 @@ class Solstice::SDL2MainLoop is MainLoop {
 		$!shadax = new Shadax(100,100,24,24,$renderer);
 	}
 
+      method render() {
+
+	### SDL_UpdateTexture($tile, 0, $data, 320*32);
+
+	SDL_SetRenderDrawColor($renderer, 0x0, 0x0, 0x0, 0xff);
+	SDL_RenderClear($renderer);
+	SDL_SetRenderDrawColor($renderer, 0xff, 0xff, 0xff, 0x7f);
+	SDL_RenderPresent($renderer);
+
+	SDL_RendererFlip;
+      }
+
       multi method loopOnce($event) {
       	    my %down_keys;
       	    my $casted_event = SDL_CastEvent($event);
@@ -77,6 +89,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 			}
 		}
 		$!currentroom.blit($renderer);
+		self.render();
       }
 
       multi method mainloop() {
