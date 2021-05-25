@@ -26,7 +26,7 @@ class Solstice::SDL2MainLoop is MainLoop {
       		$!is_running = True;
 		$!renderer = $renderer;
 		
-		$!currentroom = new Room1();
+		$!currentroom = new Room1($renderer);
 		$!shadax = new Shadax(100,100,24,24,$renderer);
 	}
 
@@ -76,6 +76,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 			CATCH { say $_ }
 			}
 		}
+		$!currentroom.blit($renderer);
       }
 
       multi method mainloop() {

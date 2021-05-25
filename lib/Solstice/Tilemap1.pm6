@@ -12,7 +12,7 @@ class Solstice::Tilemap1 is Tilemap {
       has $!tile1id;
       has @!tiles;
 
-      	submethod BUILD() {
+      	submethod BUILD(:$renderer) {
 
 		  $!tilewidth = 92;
 		  $!tileheight = 48;
@@ -37,12 +37,13 @@ class Solstice::Tilemap1 is Tilemap {
 		    	
 		    	if ($el == $!tileid0) {
 			   ### FIXME diagonal x, y
-			   @!tiles[$j].push(OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight));
+			   @!tiles[$j].push(OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
 			   $i++;
 			  }
 		     }
 		     $j++;
 		}
+
 	}
 
 	multi method collideShadax($shadax) {
@@ -57,5 +58,12 @@ class Solstice::Tilemap1 is Tilemap {
 	    retrun Nil;
 	}
 
-	
+	multi method blit($renderer) {
+	     for @tiles -> @l {
+	     	 for @l -> $el {
+		     $el.blit($renderer);
+		    }
+		     
+		}
+	}
 }

@@ -8,12 +8,20 @@ class Solstice::Diamond {
 
       has $!zposition;
 
+      has $!image;
+
       submethod BUILD(:$x, :$y, :$w, :$h, $z) {
       		$!x = $x; ### upper left corner of bounded rectangle
 		$!y = $y; ### upper left corner of bounded rectangle
 		$!width = $w;
 		$!height = $h;
 		$!zposition = $z;
+
+		$!image = Nil; ### override
+	}
+
+	multi method blit($renderer) {
+	      SDL_UpdateTexture($!image, 0, $!image, $!images.width * $!images.height);
 	}
 
 	### check if the player is on this tile

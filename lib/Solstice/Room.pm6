@@ -6,8 +6,8 @@ class Solstice::Room {
       		
 	}
 
-	multi method blit() {
-
+	multi method blit($renderer) {
+	      $!tilemap.blit($renderer)
 	}
 
 	### gets current collided tile
