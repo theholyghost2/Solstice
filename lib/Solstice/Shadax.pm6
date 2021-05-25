@@ -92,15 +92,23 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method magiccrystal() {} ### FIXME
 
 	multi method blit() {
-	      ### FIXME blit things
+	      ### FIXME blit things on x,y
 	      if ($lastmove.name == 'LeftMove') {
-	      	 $leftmoveimageslib.getImage();	      	 
+	      	 my $image = $leftmoveimageslib.getImage();
+	      	 $image.x = $!x;
+		 $image.y = $!y;
 	      }	else if ($lastmove.name == 'RightMove') {
-	      	 $rightmoveimageslib.getImage();	      	 
+	      	 my $image = $rightmoveimageslib.getImage();	      	 
+	      	 $image.x = $!x;
+		 $image.y = $!y;
 	      } else if ($lastmove.name == 'UpMove') {
-	      	 $upmoveimageslib.getImage();	      	 
+	      	 my $image = $upmoveimageslib.getImage();
+		 $image.x = $!x;
+		 $image.y = $!y;
 	      } else if ($lastmove.name == 'DownMove') {
-	      	 $downmoveimageslib.getImage();	      	 
+	      	 my $image = $downmoveimageslib.getImage();
+		 $image.x = $!x;
+		 $image.y = $!y;
 	      }
 
 	}
