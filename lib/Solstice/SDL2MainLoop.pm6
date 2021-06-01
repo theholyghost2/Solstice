@@ -32,19 +32,19 @@ class Solstice::SDL2MainLoop is Solstice::MainLoop {
 	}
 
       method render() {
-	### SDL_UpdateTexture($tile, 0, $data, 320*32);
+	### SDL2::Raw::SDL_UpdateTexture($tile, 0, $data, 320*32);
 
-	SDL_SetRenderDrawColor($!renderer, 0x0, 0x0, 0x0, 0xff);
-	SDL_RenderClear($!renderer);
-	SDL_SetRenderDrawColor($!renderer, 0xff, 0xff, 0xff, 0x7f);
-	SDL_RenderPresent($!renderer);
+	SDL2::Raw::SDL_SetRenderDrawColor($!renderer, 0x0, 0x0, 0x0, 0xff);
+	SDL2::Raw::SDL_RenderClear($!renderer);
+	SDL2::Raw::SDL_SetRenderDrawColor($!renderer, 0xff, 0xff, 0xff, 0x7f);
+	SDL2::Raw::SDL_RenderPresent($!renderer);
 
-	SDL_RendererFlip;
+	SDL2::Raw::SDL_RendererFlip;
       }
 
       multi method loopOnce($event) {
       	    my %down_keys;
-      	    my $casted_event = SDL_CastEvent($event);
+      	    my $casted_event = SDL2::Raw::SDL_CastEvent($event);
 
 	    given $casted_event {
 		when (*.type == QUIT) {
@@ -95,9 +95,9 @@ class Solstice::SDL2MainLoop is Solstice::MainLoop {
 
       multi method mainloop() {
 
-      	    my $event = SDL_Event.new;
+      	    my $event = SDL2::Raw::SDL_Event.new;
 
-	    while self.is_running and SDL_PollEvent($event) { ### NOTE SDL_WaitEvent 
+	    while self.is_running and SDL2::Raw::SDL_PollEvent($event) { ### NOTE SDL2::Raw::SDL_WaitEvent 
 	    	  self.loopOnce($event);
             }
 
