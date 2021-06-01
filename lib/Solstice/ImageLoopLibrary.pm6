@@ -18,7 +18,8 @@ class ImageLoopLibrary {
 
       method addImage($filename) {
       	     ### FIXME :
-	     my $img = IMG_Load("./pics/ochreslab-tile-1.png");
+	     my $img = IMG_Load($filename);
+	     SDL_SetColorKey($img, SDL_TRUE, (255,255,255));
 	     my $tex = SDL_CreateTextureFromSurface($renderer, $img);
 
 	     @!images.push($tex);

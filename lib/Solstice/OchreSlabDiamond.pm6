@@ -9,7 +9,8 @@ class Solstice::OchreSlabDiamond is SlabDiamond {
 		$!height = 48; ### maximum height of diamond
 		$!zposition = 24;
 
-		my $img = IMG_Load("./pics/ochreslab-tile-1.png");
+		my $img = IMG_Load("images/ochre-slab-tile-1.png");
+		SDL_SetColorKey($img, SDL_TRUE, (255,255,255));	     
 		$!image = SDL_CreateTextureFromSurface($renderer, $img);
 
 	}
