@@ -18,11 +18,11 @@ class Solstice::Shadax is Solstice::Entity {
       has $!downmoveimageslib;
 
       submethod BUILD(:$x, :$y, :$w, :$h, :$renderer) {
-      		$!x = $x;
-		$!y = $y;
+      		self.x = $x;
+		self.y = $y;
 
-		$!width = $w;
-		$!height = $h;
+		self.width = $w;
+		self.height = $h;
 
 		$!lastmove = Nil;
 
@@ -30,10 +30,10 @@ class Solstice::Shadax is Solstice::Entity {
 
 		$!renderer = $renderer;
 		
-		$!leftmoveimageslib = ImageLoopLibrary($renderer);
-		$!rightmoveimageslib = ImageLoopLibrary($renderer);
-		$!upmoveimageslib = ImageLoopLibrary($renderer);
-		$!downmoveimageslib = ImageLoopLibrary($renderer);
+		$!leftmoveimageslib = Solstice::ImageLoopLibrary($renderer);
+		$!rightmoveimageslib = Solstice::ImageLoopLibrary($renderer);
+		$!upmoveimageslib = Solstice::ImageLoopLibrary($renderer);
+		$!downmoveimageslib = Solstice::ImageLoopLibrary($renderer);
 		### FIXME add images to image loop libs
 	}
 

@@ -1,3 +1,5 @@
+use SDL2::Raw;
+
 class Solstice::Diamond {
 
       has $!x;
@@ -10,7 +12,7 @@ class Solstice::Diamond {
 
       has $!image;
 
-      submethod BUILD(:$x, :$y, :$w, :$h, $z) {
+      submethod BUILD(:$x, :$y, :$w, :$h, :$z) {
       		$!x = $x; ### upper left corner of bounded rectangle
 		$!y = $y; ### upper left corner of bounded rectangle
 		$!width = $w;
@@ -21,9 +23,9 @@ class Solstice::Diamond {
 	}
 
 	multi method blit($renderer) {
-	      SDL_UpdateTexture($!image, 0, $!image, $!images.width * $!images.height);
+	      SDL_UpdateTexture($!image, 0, $!image, $!image.width * $!image.height);
 	      my $destrect = SDL_Rect.new($!x, $!y, $!width, $!height);
-	      SDL_RenderCopy($renderer, $i!mage, 0, $destrect);
+	      SDL_RenderCopy($renderer, $!image, 0, $destrect);
 	}
 
 	### check if the player is on this tile
@@ -34,16 +36,13 @@ class Solstice::Diamond {
 	      if (self.diagonalSolution($!y + $!height / 2, $!y,
 	      	 			$!x + $!width / 2, $!x, $player)) {
 			return True;
-	      } else ### right upper quarter of diamond
-	      if (self.diagonalSolution($!y + $!height / 2, $!y,
+	      } elsif (self.diagonalSolution($!y + $!height / 2, $!y,
 	      	 			$!x + $!width / 2, $!x + $!width, $player)) {
 			return True;
-	      } else ### left down quarter of diamond
-	      if (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
+	      } elsif (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
 	      	 			$!x + $!width / 2, $!x, $player)) {
 			return True;
-		} else ### right down quarter of diamond
-	      if (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
+		} elsif (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
 	      	 			$!x + $!width / 2, $!x + $!width, $player)) {
 			return True;
 		} else {
@@ -54,10 +53,10 @@ class Solstice::Diamond {
 	method diagonalSolution($y2, $y1, $x2, $x1, $player) {
 	      my $dy = $y2 - $y1;
 	      my $dx = $x2 - $x1;
-	      my $diff = abs($dy / $dx);
+	      my $d = abs($dy / $dx);
 
 	      ### for fence post error
-	      if ($player.getLastMove()^name == 'RightMove') {
+	      if ($player.getLastMove().^name == 'RightMove') {
 
 	      	if (($d * ($player.getX() + $player.getWidth() - $x1) - ($player.getY() - $y1)) > 0) {
 	      	 	return True;
@@ -66,7 +65,7 @@ class Solstice::Diamond {
 	      	}
 
 	      ### for fence post error
-	      } else if ($player.getLastMove()^name == 'DownMove') {
+	      } elsif ($player.getLastMove().^name == 'DownMove') {
 
 	      	if (($d * ($player.getX() + $player.getWidth() - $x1) - ($player.getY() + $player.getHeight() - $y1)) > 0) {
 	      	 	return True;
@@ -75,7 +74,7 @@ class Solstice::Diamond {
 	      	}
 
 	      ### for fence post error
-	      } else if ($player.getLastMove()^name == 'UpMove') {
+	      } elsif ($player.getLastMove().^name == 'UpMove') {
 
 	      	if (($d * ($player.getX() - $x1)) - ($player.getY() + $player.getHeight() - $y1) > 0) {
 	      	 	return True;

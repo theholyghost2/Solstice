@@ -1,9 +1,9 @@
 use Solstice::LoopObject;
 
-class Solstice::MainLoop is LoopObject {
+class Solstice::MainLoop is Solstice::LoopObject {
 
       submethod BUILD() {
-      		$!is_running = True;
+      		self.is_running = True;
 	}
 
       multi method loopOnce() {

@@ -13,7 +13,7 @@ class Solstice::Room {
 	### gets current collided tile
 	multi method collideShadax($shadax) {
 	      ### true collision returns the collided tile (else Nil)
-	      my $currentcollidedtile = $tilemap.collideShadax($shadax);
+	      my $currentcollidedtile = $!tilemap.collideShadax($shadax);
 
 	      if ($currentcollidedtile != Nil) {
 	      	  $shadax.undoMove();

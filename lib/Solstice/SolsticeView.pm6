@@ -1,6 +1,6 @@
 use Solstice::View;
 
-class Solstice::SolsticeView is View {
+class Solstice::SolsticeView is Solstice::View {
 
        submethod BUILD() {
       		

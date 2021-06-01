@@ -4,6 +4,7 @@ class Solstice::Entity {
       has $!y;
       has $!width;
       has $!height;
+      has $!zposition;
 
       submethod BUILD(:$x, :$y, :$w, :$h, :$zpos) {
       		$!x = $x;

@@ -20,7 +20,7 @@ class ImageLoopLibrary {
       	     ### FIXME :
 	     my $img = IMG_Load($filename);
 	     SDL_SetColorKey($img, SDL_TRUE, (255,255,255));
-	     my $tex = SDL_CreateTextureFromSurface($renderer, $img);
+	     my $tex = SDL_CreateTextureFromSurface($!renderer, $img);
 
 	     @!images.push($tex);
       }
@@ -30,6 +30,7 @@ class ImageLoopLibrary {
 	     	$!index = 0;
 	     }
 	     ### FIXME :
-	     SDL_UpdateTexture(@!images[$index], 0, @!images[$!index], @!images[$!index].width * @!images[!$index].height);
+	     SDL_UpdateTexture(@!images[$!index], 0, @!images[$!index], @!images[$!index].width * @!images[$!index].height);
       	     return @!images[$!index++];
       }
+}

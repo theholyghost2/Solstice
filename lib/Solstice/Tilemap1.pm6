@@ -1,16 +1,22 @@
 use Solstice::Tilemap;
 
+use Solstice::OchreFloorDiamond;
+
 ### The tilemap of the first room
 
-class Solstice::Tilemap1 is Tilemap {
+class Solstice::Tilemap1 is Solstice::Tilemap {
 
       has $!tilewidth;
       has $!tileheight;
       has $!mapwidth;
       has $!mapheight;
 
+      has @!map;
+
       has $!tile1id;
       has @!tiles;
+
+      has $!tileid0;
 
       	submethod BUILD(:$renderer) {
 
@@ -37,7 +43,7 @@ class Solstice::Tilemap1 is Tilemap {
 		    	
 		    	if ($el == $!tileid0) {
 			   ### FIXME diagonal x, y
-			   @!tiles[$j].push(OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
+			   @!tiles[$j].push(Solstice::OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
 			   $i++;
 			  }
 		     }
@@ -47,7 +53,7 @@ class Solstice::Tilemap1 is Tilemap {
 	}
 
 	multi method collideShadax($shadax) {
-	     for @tiles -> @l {
+	     for @!tiles -> @l {
 	     	 for @l -> $el {
 		     if ($el.collideDiamond($shadax) and $el.collideXY($shadax)) {
 		     	return $el;
@@ -55,11 +61,11 @@ class Solstice::Tilemap1 is Tilemap {
 		     }
 		     
 		}
-	    retrun Nil;
+	    return Nil;
 	}
 
 	multi method blit($renderer) {
-	     for @tiles -> @l {
+	     for @!tiles -> @l {
 	     	 for @l -> $el {
 		     $el.blit($renderer);
 		    }

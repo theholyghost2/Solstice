@@ -1,10 +1,10 @@
 use Solstice::Move;
 
-class Soltice::LeftMove is Move {
+class Soltice::LeftMove is Solstice::Move {
 
       submethod BUILD() {
-      		$!dx = -1;
-		$!dy = -1;
+      		self.dx = -1;
+		self.dy = -1;
       }
 
 }

@@ -1,17 +1,17 @@
 use Solstice::SlabDiamond;
 
-class Solstice::OchreSlabDiamond is SlabDiamond {
+class Solstice::OchreSlabDiamond is Solstice::SlabDiamond {
 
       submethod BUILD(:$x, :$y, :$renderer) {
-      		$!x = $x;
-		$!y = $y;
-		$!width = 96; ### breadth of diamond
-		$!height = 48; ### maximum height of diamond
-		$!zposition = 24;
+      		self.x = $x;
+		self.y = $y;
+		self.width = 96; ### breadth of diamond
+		self.height = 48; ### maximum height of diamond
+		self.zposition = 24;
 
 		my $img = IMG_Load("images/ochre-slab-tile-1.png");
 		SDL_SetColorKey($img, SDL_TRUE, (255,255,255));	     
-		$!image = SDL_CreateTextureFromSurface($renderer, $img);
+		self.image = SDL_CreateTextureFromSurface($renderer, $img);
 
 	}
 
