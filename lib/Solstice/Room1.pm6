@@ -11,7 +11,7 @@ class Solstice::Room1 is Room {
 	}
 
 	multi method blit($renderer) {
-	      $!tilemap.blit($renderer)
+	      $!tilemap.blit($renderer);
 	}
 
 }

@@ -4,7 +4,7 @@ use SDL2::Raw;
 
 class ImageLoopLibrary {
 
-      has @!images;
+      has @!images; ### contains SDL2 textures
       has $!index;
 
       has $!renderer;
@@ -16,11 +16,12 @@ class ImageLoopLibrary {
 		$!renderer = $renderer;
       }
 
-      method addImage($image) {
+      method addImage($filename) {
       	     ### FIXME :
-		my $tex = SDL_CreateTexture($!renderer, %PIXELFORMAT<RGBA8888>
-+, TARGET, $image.width, $image.height);
-		@!images.push($tex);
+	     my $img = IMG_Load("./pics/ochreslab-tile-1.png");
+	     my $tex = SDL_CreateTextureFromSurface($renderer, $img);
+
+	     @!images.push($tex);
       }
 
       method getImage() {

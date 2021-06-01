@@ -10,7 +10,7 @@ class Solstice::SolsticeModel is Model {
 	}
 
 	multi method drawOn($view) {
-	      $view.blit();
+	      $view.blit(self);
 	}
 
 }

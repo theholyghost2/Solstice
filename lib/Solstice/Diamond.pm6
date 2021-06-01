@@ -59,7 +59,7 @@ class Solstice::Diamond {
 	      ### for fence post error
 	      if ($player.getLastMove()^name == 'RightMove') {
 
-	      	if (abs(($d * ($player.getX() + $player.getWidth() - $x1)) - ($player.getY() - $y1)) > 0) {
+	      	if (($d * ($player.getX() + $player.getWidth() - $x1) - ($player.getY() - $y1)) > 0) {
 	      	 	return True;
 	      	} else {
 	      		return False;
@@ -68,7 +68,7 @@ class Solstice::Diamond {
 	      ### for fence post error
 	      } else if ($player.getLastMove()^name == 'DownMove') {
 
-	      	if (abs(($d * ($player.getX() + $player.getWidth() - $x1)) - ($player.getY() + $player.getHeight() - $y1)) > 0) {
+	      	if (($d * ($player.getX() + $player.getWidth() - $x1) - ($player.getY() + $player.getHeight() - $y1)) > 0) {
 	      	 	return True;
 	      	} else {
 	      		return False;
@@ -77,14 +77,14 @@ class Solstice::Diamond {
 	      ### for fence post error
 	      } else if ($player.getLastMove()^name == 'UpMove') {
 
-	      	if (abs(($d * ($player.getX() - $x1)) - ($player.getY() + $player.getHeight() - $y1)) > 0) {
+	      	if (($d * ($player.getX() - $x1)) - ($player.getY() + $player.getHeight() - $y1) > 0) {
 	      	 	return True;
 	      	} else {
 	      		return False;
 	      	}
 
 	      } else {
-	      if (abs(($d * ($player.getX() - $x1)) - ($player.getY() - $y1)) > 0) {
+	      if (($d * ($player.getX() - $x1)) - ($player.getY() - $y1) > 0) {
 	      	 return True;
 	      } else {
 	      	return False;

@@ -8,7 +8,7 @@ class Solstice::View {
 
 	}
 
-	multi method blit() {
+	multi method blit($model) {
 
 	}
 

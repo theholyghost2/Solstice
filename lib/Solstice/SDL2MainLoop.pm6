@@ -96,7 +96,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 
       	    my $event = SDL_Event.new;
 
-	    while $!is_running and SDL_PollEvent($event) { ### SDL_WaitEvent 
+	    while $!is_running and SDL_PollEvent($event) { ### NOTE SDL_WaitEvent 
 	    	  self.loopOnce($event);
             }
 
