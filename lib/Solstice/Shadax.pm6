@@ -26,7 +26,7 @@ class Solstice::Shadax is Solstice::Entity {
 
 		$!lastmove = Nil;
 
-		$!zposition = 0; ### FIXME dispatch tilemap zpos
+		self.zposition = 0; ### FIXME dispatch tilemap zpos
 
 		$!renderer = $renderer;
 		
@@ -53,40 +53,40 @@ class Solstice::Shadax is Solstice::Entity {
 
 	multi method collideSlabXY($slabdiamond) {
 	      ### collide with Slab diamond
-	      if ($slabdiamond.getZPos() > $!zposition) {
+	      if ($slabdiamond.getZPos() > self.zposition) {
 	      	 return $slabdiamond;
 	      } else {
 	      	return Nil;
 	      }
 	}
 
-	multi method getX() { return $!x; }
-  	multi method getY() { return $!y; }
-	multi method getWidth() { return $!width; }
-  	multi method getHeight() { return $!height; }
+	multi method getX() { return self.x; }
+  	multi method getY() { return self.y; }
+	multi method getWidth() { return self.width; }
+  	multi method getHeight() { return self.height; }
 
 	multi method getLastMove() { return $!lastmove; }
 
-	multi method setXY($x, $y) { $!x = $x; $!y = $y; }
+	multi method setXY($x, $y) { self.x = $x; self.y = $y; }
 
 	multi method moveLeft() {
-	      my $lmove = LeftMove.new();
-	      $lastmove = $lmove;
+	      my $lmove = Solstice::LeftMove.new();
+	      $!lastmove = $lmove;
 	      $lmove.move(self);
 	}
 	multi method moveRight() {
-	      my $rmove = RighttMove.new();
-	      $lastmove = $rmove;
+	      my $rmove = Solstice::RighttMove.new();
+	      $!lastmove = $rmove;
 	      $rmove.move(self);
 	}
 	multi method moveUp() {
-	      my $umove = UpMove.new();
-	      $lastmove = $umove;
+	      my $umove = Solstice::UpMove.new();
+	      $!lastmove = $umove;
 	      $umove.move(self);
 	}
 	multi method moveDown() {
-	      my $dmove = DownMove.new();
-	      $lastmove = $dmove;
+	      my $dmove = Solstice::DownMove.new();
+	      $!lastmove = $dmove;
 	      $dmove.move(self);
 	}
 
@@ -96,20 +96,20 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method blit() {
 	      ### FIXME blit things on x,y
 
-	      my $destrect = SDL_Rect.new($!x, $!y + $!zposition, $!width, $!height); ### NOTE + $zpos
+	      my $destrect = SDL2::Raw::SDL_Rect.new(self.x, self.y + self.zposition, self.width, self.height); ### NOTE + $zpos
 
-	      if ($lastmove.^name == 'LeftMove') {
-	      	 my $image = $leftmoveimageslib.getImage();
-		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      }	else if ($lastmove.^name == 'RightMove') {
-	      	 my $image = $rightmoveimageslib.getImage();
-		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      } else if ($lastmove.^name == 'UpMove') {
-	      	 my $image = $upmoveimageslib.getImage();
-		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      } else if ($lastmove.^name == 'DownMove') {
-	      	 my $image = $downmoveimageslib.getImage();
-		 SDL_RenderCopy($!renderer, $image, 0, $destrect);
+	      if ($!lastmove.^name == 'LeftMove') {
+	      	 my $image = $!leftmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
+	      }	elsif ($!lastmove.^name == 'RightMove') {
+	      	 my $image = $!rightmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
+	      } elsif ($!lastmove.^name == 'UpMove') {
+	      	 my $image = $!upmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
+	      } elsif ($!lastmove.^name == 'DownMove') {
+	      	 my $image = $!downmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
 	      }
 
 	}

@@ -15,7 +15,7 @@ $window = SDL_CreateWindow(
 		SHOWN
 		);	
 
-my $renderer = SDL_CreateRenderer( $window, -1, ACCELERATED );
+$renderer = SDL_CreateRenderer( $window, -1, ACCELERATED );
 
 SDL_ClearError();
 
@@ -24,6 +24,6 @@ SDL_GetRendererInfo($renderer, $renderer_info);
 say $renderer_info;
 say %PIXELFORMAT.pairs.grep({ $_.value == any($renderer_info.texf1, $renderer_info.texf2, $renderer_info.texf3) });
 
-my $mainloop = SDL2MainLoop($renderer);
+my $mainloop = Solstice::SDL2MainLoop($renderer);
 $mainloop.mainloop();
 		

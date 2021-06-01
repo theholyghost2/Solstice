@@ -1,12 +1,12 @@
 use Solstice::Model;
 use Solstice::Shadax;
 
-class Solstice::SolsticeModel is Model {
+class Solstice::SolsticeModel is Solstice::Model {
 
       has $!shadax;      
 
        submethod BUILD() {
-      		$!shadax = Shadax();
+      		$!shadax = Solstice::Shadax();
 	}
 
 	multi method drawOn($view) {

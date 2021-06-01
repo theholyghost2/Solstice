@@ -1,11 +1,12 @@
 use Solstice::MainLoop;
 
 use Solstice::Shadax;
+use Solstice::JumpingShadax;
 use Solstice::Room1;
 
 use SDL2::Raw;
 
-class Solstice::SDL2MainLoop is MainLoop {
+class Solstice::SDL2MainLoop is Solstice::MainLoop {
 
       has $!shadax;
       has $!currentroom;
@@ -23,20 +24,20 @@ class Solstice::SDL2MainLoop is MainLoop {
 	);
 
       submethod BUILD(:$renderer) {
-      		$!is_running = True;
+      		self.is_running = True;
 		$!renderer = $renderer;
 		
-		$!currentroom = Room1.new($renderer);
-		$!shadax = Shadax.new(100,100,24,24,$renderer);
+		$!currentroom = Solstice::Room1.new($renderer);
+		$!shadax = Solstice::Shadax.new(100,100,24,24,$renderer);
 	}
 
       method render() {
 	### SDL_UpdateTexture($tile, 0, $data, 320*32);
 
-	SDL_SetRenderDrawColor($renderer, 0x0, 0x0, 0x0, 0xff);
-	SDL_RenderClear($renderer);
-	SDL_SetRenderDrawColor($renderer, 0xff, 0xff, 0xff, 0x7f);
-	SDL_RenderPresent($renderer);
+	SDL_SetRenderDrawColor($!renderer, 0x0, 0x0, 0x0, 0xff);
+	SDL_RenderClear($!renderer);
+	SDL_SetRenderDrawColor($!renderer, 0xff, 0xff, 0xff, 0x7f);
+	SDL_RenderPresent($!renderer);
 
 	SDL_RendererFlip;
       }
@@ -64,21 +65,21 @@ class Solstice::SDL2MainLoop is MainLoop {
 			if ($comm == K_LEFT) {
 			   $!shadax.moveLeft();
 			   $!shadax.collideRoom($!currentroom);
-			} else if ($comm == K_RIGHT) {
+			} elsif ($comm == K_RIGHT) {
 			   $!shadax.moveRight();
 			   $!shadax.collideRoom($!currentroom);
-			} else if ($comm == K_UP) {
+			} elsif ($comm == K_UP) {
 			   $!shadax.moveUp();
 			   $!shadax.collideRoom($!currentroom);
-			} else if ($comm == K_DOWN) {
+			} elsif ($comm == K_DOWN) {
 			   $!shadax.moveDown();
 			   $!shadax.collideRoom($!currentroom);
-			} else if ($comm == K_X) {
+			} #elsif ($comm == K_X) {
 			   
-			   $!shadax = JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
-			   $!shadax.jump();
+			   #$!shadax = Solstice::JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
+			   #$!shadax.jump();
 			   
-		        }### else if ($comm == K_Z) {
+		        #}### else if ($comm == K_Z) {
 
 			###}
 
@@ -87,7 +88,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 			CATCH { say $_ }
 			}
 		}
-		$!currentroom.blit($renderer);
+		$!currentroom.blit($!renderer);
 		$!shadax.blit();
 		self.render();
       }
@@ -96,7 +97,7 @@ class Solstice::SDL2MainLoop is MainLoop {
 
       	    my $event = SDL_Event.new;
 
-	    while $!is_running and SDL_PollEvent($event) { ### NOTE SDL_WaitEvent 
+	    while self.is_running and SDL_PollEvent($event) { ### NOTE SDL_WaitEvent 
 	    	  self.loopOnce($event);
             }
 

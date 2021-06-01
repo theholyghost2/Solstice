@@ -18,8 +18,8 @@ class ImageLoopLibrary {
 
       method addImage($filename) {
       	     ### FIXME :
-	     my $img = IMG_Load($filename);
-	     SDL_SetColorKey($img, SDL_TRUE, (255,255,255));
+	     my $img = SDL2::Raw::IMG_Load($filename);
+	     SDL2::Raw::SDL_SetColorKey($img, SDL2::Raw::SDL_TRUE, (255,255,255));
 	     my $tex = SDL_CreateTextureFromSurface($!renderer, $img);
 
 	     @!images.push($tex);

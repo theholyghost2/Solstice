@@ -2,11 +2,11 @@ use Solstice::Shadax;
 
 class Solstice::JumpingShadax is Solstice::Shadax {
       submethod BUILD(:$x, :$y, :$w, :$h) {
-      		$!x = $x;
-		$!y = $y;
+      		self.x = $x;
+		self.y = $y;
 
-		$!width = $w;
-		$!height = $h;
+		self.width = $w;
+		self.height = $h;
 	}
 
 	multi method collideFloorXY($floordiamond) {
@@ -19,10 +19,10 @@ class Solstice::JumpingShadax is Solstice::Shadax {
 	      return False;
 	}
 
-	multi method moveLeft() { $!x -= 1; $!y -= 0.5; }
-	multi method moveRight() { $!x += 1; $!y += 0.5; }
-	multi method moveUp() { $!x += 1; $!y -= 0.5; }
-	multi method moveDown() { $!x -= 1; $!y += 0.5; }
+	multi method moveLeft() { self.x -= 1; self.y -= 0.5; }
+	multi method moveRight() { self.x += 1; self.y += 0.5; }
+	multi method moveUp() { self.x += 1; self.y -= 0.5; }
+	multi method moveDown() { self.x -= 1; self.y += 0.5; }
 
 	multi method jump() {} ### FIXME
 	multi method magiccrystal() {} ### FIXME 
