@@ -15,6 +15,7 @@ enum GAME_KEYS (
         K_LEFT => 80,
         K_RIGHT => 79,
         K_SPACE => 44,
+        K_ESCAPE => 21,
 );
 
 my %down_keys;
@@ -69,6 +70,11 @@ while SDL_PollEvent($event) {
                 when *.type == KEYDOWN {
                         if GAME_KEYS(.scancode) -> $comm {
                                 %down_keys{$comm} = 1;
+
+				if ($comm == K_ESCAPE) {
+					exit();
+				}
+
 			   ### $shadax.moveLeft();
                            ### $shadax.collideRoom($!currentroom);
 #$!shadax = Solstice::JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
