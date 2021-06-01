@@ -16,9 +16,9 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
       has $!tile1id;
       has @!tiles;
 
-      has $!tileid0;
+      has $!tileid1;
 
-      	submethod BUILD(:$renderer) {
+      	submethod BUILD() {
 
 		  $!tilewidth = 96;
 		  $!tileheight = 48;
@@ -27,7 +27,7 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
 		  $!mapheight = 5;
 
 		  @!tiles = ();
-		  $!tileid0 = 0;
+		  $!tileid1 = 0;
 
 		  @!map = ((0,0,0,0,0),
 		  	(0,0,0,0,0),
@@ -41,9 +41,9 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
 		    @!tiles.push(());
 		    for @l -> $el {
 		    	
-		    	if ($el == $!tileid0) {
+		    	if ($el == $!tileid1) {
 			   ### FIXME diagonal x, y
-			   @!tiles[$j].push(Solstice::OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
+			   @!tiles[$j].push(Solstice::OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight));
 			   $i++;
 			  }
 		     }

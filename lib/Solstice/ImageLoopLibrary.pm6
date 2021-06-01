@@ -7,22 +7,19 @@ class ImageLoopLibrary {
       has @!images; ### contains SDL2 textures
       has $!index;
 
-      has $!renderer;
-
-      submethod BUILD(:$renderer) {
+      submethod BUILD() {
       		@!images = ();
 		$!index = 0;
 
-		$!renderer = $renderer;
       }
 
       method addImage($filename) {
       	     ### FIXME :
 	     my $img = SDL2::Raw::IMG_Load($filename);
 	     SDL2::Raw::SDL_SetColorKey($img, SDL2::Raw::SDL_TRUE, (255,255,255));
-	     my $tex = SDL_CreateTextureFromSurface($!renderer, $img);
+	     ### my $tex = SDL_CreateTextureFromSurface($!renderer, $img);
 
-	     @!images.push($tex);
+	     ###@!images.push($tex);
       }
 
       method getImage() {

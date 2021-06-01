@@ -4,7 +4,7 @@ use SDL2::Raw;
 
 class Solstice::OchreFloorDiamond is Solstice::FloorDiamond {
 
-      submethod BUILD(:$x, :$y, :$renderer) {
+      submethod BUILD(:$x, :$y) {
       		self.x = $x;
 		self.y = $y;
 		self.width = 96; ### breadth of diamond
@@ -15,7 +15,7 @@ class Solstice::OchreFloorDiamond is Solstice::FloorDiamond {
 
 		my $img = SDL2::Raw::IMG_Load("images/ochre-floor-tile-1.png");
 		SDL2::Raw::SDL_SetColorKey($img, SDL2::Raw::SDL_TRUE, (255,255,255));	     
-		self.image = SDL2::Raw::SDL_CreateTextureFromSurface($renderer, $img);
+		###self.image = SDL2::Raw::SDL_CreateTextureFromSurface($renderer, $img);
 	}
 
 }
