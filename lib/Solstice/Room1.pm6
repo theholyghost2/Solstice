@@ -6,8 +6,8 @@ use Solstice::Tilemap1;
 
 class Solstice::Room1 is Solstice::Room {
 
-       submethod BUILD() {
-      		self.tilemap = Solstice::Tilemap1.new();
+       submethod BUILD(:$renderer) {
+      		self.tilemap = Solstice::Tilemap1.new($renderer);
 	}
 
 	multi method blit($renderer) {

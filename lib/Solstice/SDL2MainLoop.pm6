@@ -11,10 +11,10 @@ class Solstice::SDL2MainLoop is Solstice::MainLoop {
       has $!shadax;
       has $!currentroom;
 
-      submethod BUILD($renderer) {
+      submethod BUILD(:$renderer) {
       		self.is_running = True;
 		
-		$!currentroom = Solstice::Room1.new();
+		$!currentroom = Solstice::Room1.new($renderer);
 		$!shadax = Solstice::Shadax.new(100,100,24,24,$renderer);
 	}
 
