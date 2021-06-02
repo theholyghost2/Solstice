@@ -18,7 +18,7 @@ class Solstice::Room2 is Solstice::Room {
 	}
 
 	multi method blit($renderer) {
-	      my $destrect = SDL2::Raw::SDL_Rect.new($!x,$!y,1024,768);
+	      my $destrect = SDL2::Raw::SDL_Rect.new($!x,$!y,1024,768); ### QueryTexture width height
 	      my $image = SDL2::Raw::SDL_CreateTextureFromSurface($renderer, $!background-image);
 	      SDL2::Raw::SDL_RenderCopy($renderer, $image, 0, $destrect);
 	}
