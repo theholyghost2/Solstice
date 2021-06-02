@@ -3,11 +3,12 @@
         "name" : "Solstice",
         "auth" : "CPAN:HOLYGHOST",
         "api" : "1",
-        "version" : "0.1.1",
+        "version" : "0.1.2",
         "description" : "A Solstice game written in Raku.",
         "authors" : [ "The Holy Ghost" ],
         "license" : "General Public License 2, Artistic-2.0",
         "provides" : {
+            "Solstice::AdventureRoom" : "lib/Solstice/AdventureRoom.pm6",
             "Solstice::Controller" : "lib/Solstice/Controller.pm6",
             "Solstice::Diamond" : "lib/Solstice/Diamond.pm6",
             "Solstice::DownMove" : "lib/Solstice/DownMove.pm6",
@@ -36,6 +37,7 @@
             "Solstice::SolsticeView" : "lib/Solstice/SolsticeView.pm6",
             "Solstice::Tilemap" : "lib/Solstice/Tilemap.pm6",
             "Solstice::Tilemap1" : "lib/Solstice/Tilemap1.pm6",
+            "Solstice::Tilemap2" : "lib/Solstice/Tilemap2.pm6",
             "Solstice::UpMove" : "lib/Solstice/UpMove.pm6",
             "Solstice::View" : "lib/Solstice/View.pm6"
         },
@@ -46,6 +48,6 @@
         "tags": [
           "Solstice"
         ],
-        "source-url" : "http://cpan.metacpan.org/authors/id/H/HO/HOLYGHOST/Perl6/Solstice-0.1.1.tar.gz"
+        "source-url" : "http://cpan.metacpan.org/authors/id/H/HO/HOLYGHOST/Perl6/Solstice-0.1.2.tar.gz"
 
 }

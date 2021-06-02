@@ -5,7 +5,7 @@ use Solstice::OchreSlabDiamond;
 
 ### The tilemap of the first room
 
-class Solstice::Tilemap1 is Solstice::Tilemap {
+class Solstice::Tilemap2 is Solstice::Tilemap {
 
       has $!tilewidth;
       has $!tileheight;
@@ -18,6 +18,7 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
       has @!tiles;
 
       has $!tileid1;
+      has $!tileid2;
 
       	submethod BUILD(:$renderer) {
 
@@ -29,9 +30,10 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
 
 		  @!tiles = ();
 		  $!tileid1 = 0;
+		  $!tileid2 = 1;
 
-		  @!map = ((0,0,0,0,0),
-		  	(0,0,0,0,0),
+		  @!map = ((0,1,0,0,0),
+		  	(0,0,1,0,0),
 			(0,0,0,0,0),
 			(0,0,0,0,0),
 			(0,0,0,0,0));
@@ -45,6 +47,10 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
 		    	if ($el == $!tileid1) {
 			   ### FIXME diagonal x, y
 			   @!tiles[$j].push(Solstice::OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
+			   $i++;
+			  } elsif ($el == $!tileid2) {
+			   ### FIXME diagonal x, y
+			   @!tiles[$j].push(Solstice::OchreSlabDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
 			   $i++;
 			  }
 		     }
