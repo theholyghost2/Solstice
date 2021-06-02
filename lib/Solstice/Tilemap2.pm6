@@ -62,7 +62,7 @@ class Solstice::Tilemap2 is Solstice::Tilemap {
 	multi method collideShadax($shadax) {
 	     for @!tiles -> @l {
 	     	 for @l -> $el {
-		     if ($el.collideDiamond($shadax) and $el.collideXY($shadax)) {
+		     if ($el.collideDiamond($shadax, self) and $el.collideXY($shadax)) {
 		     	return $el;
 			  }
 		     }
@@ -79,4 +79,7 @@ class Solstice::Tilemap2 is Solstice::Tilemap {
 		     
 		}
 	}
+
+	multi method get-tile-width() { return $!tilewidth; } 
+	multi method get-tile-height() { return $!tileheight; } 
 }

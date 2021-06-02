@@ -30,23 +30,23 @@ class Solstice::Diamond {
 
 	### check if the player is on this tile
 	### This is not needed for collision detection (which only uses zpos)
-	multi method collideDiamond($player) {
+	multi method collideDiamond($player, $tilemap) {
 
 	      ### left upper quarter of diamond
-	      if (self.diagonalSolution($!y, $!y + $!height / 2,
-	      	 			$!x + $!width / 2, $!x, $player)) {
+	      if (self.diagonalSolution($!y, $!y + $tilemap.get-tile-height() / 2,
+	      	 			$!x + $tilemap.get-tile-width() / 2, $!x, $player)) {
 			return True;
 	      ### right upper quarter of diamond
-	      } elsif (self.diagonalSolution($!y, $!y + $!height / 2,
-	      	 			$!x + $!width / 2, $!x + $!width, $player)) {
+	      } elsif (self.diagonalSolution($!y, $!y + $tilemap.get-tile-height() / 2,
+	      	 			$!x + $tilemap.get-tile-width() / 2, $!x + $tilemap.get-tile-width(), $player)) {
 			return True;
 	      ### left down quarter of diamond
-	      } elsif (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
-	      	 			$!x, $!x + $!width / 2, $player)) {
+	      } elsif (self.diagonalSolution($!y + $tilemap.get-tile-height() / 2, $!y + $tilemap.get-tile-height(),
+	      	 			$!x, $!x + $tilemap.get-tile-width() / 2, $player)) {
 			return True;
 	      ### right down quarter of diamond
-		} elsif (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
-	      	 			$!x + $!width, $!x + $!width / 2, $player)) {
+		} elsif (self.diagonalSolution($!y + $tilemap.get-tile-height() / 2, $!y + $tilemap.get-tile-height(),
+	      	 			$!x + $tilemap.get-tile-width(), $!x + $tilemap.get-tile-width() / 2, $player)) {
 			return True;
 		} else {
 	      	  return False;
