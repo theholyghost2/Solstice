@@ -1,6 +1,8 @@
 class Solstice::Tilemap {
 
       	has @!map;
+	has $!x;
+	has $!y;
 
       	submethod BUILD() {
 

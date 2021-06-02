@@ -23,7 +23,7 @@ class Solstice::Diamond {
 	}
 
 	multi method blit($renderer) {
-	      SDL_UpdateTexture($!image, 0, $!image, $!image.width * $!image.height);
+	      ### SDL_UpdateTexture($!image, 0, $!image, $!image.width * $!image.height);
 	      my $destrect = SDL_Rect.new($!x, $!y, $!width, $!height);
 	      SDL_RenderCopy($renderer, $!image, 0, $destrect);
 	}
@@ -33,17 +33,20 @@ class Solstice::Diamond {
 	multi method collideDiamond($player) {
 
 	      ### left upper quarter of diamond
-	      if (self.diagonalSolution($!y + $!height / 2, $!y,
+	      if (self.diagonalSolution($!y, $!y + $!height / 2,
 	      	 			$!x + $!width / 2, $!x, $player)) {
 			return True;
-	      } elsif (self.diagonalSolution($!y + $!height / 2, $!y,
+	      ### right upper quarter of diamond
+	      } elsif (self.diagonalSolution($!y, $!y + $!height / 2,
 	      	 			$!x + $!width / 2, $!x + $!width, $player)) {
 			return True;
+	      ### left down quarter of diamond
 	      } elsif (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
-	      	 			$!x + $!width / 2, $!x, $player)) {
+	      	 			$!x, $!x + $!width / 2, $player)) {
 			return True;
+	      ### right down quarter of diamond
 		} elsif (self.diagonalSolution($!y + $!height / 2, $!y + $!height,
-	      	 			$!x + $!width / 2, $!x + $!width, $player)) {
+	      	 			$!x + $!width, $!x + $!width / 2, $player)) {
 			return True;
 		} else {
 	      	  return False;

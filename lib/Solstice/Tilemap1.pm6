@@ -44,7 +44,7 @@ class Solstice::Tilemap1 is Solstice::Tilemap {
 		    	
 		    	if ($el == $!tileid1) {
 			   ### FIXME diagonal x, y
-			   @!tiles[$j].push(Solstice::OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
+			   @!tiles[$j].push(Solstice::OchreFloorDiamond(self.x + $i * $!tilewidth, self.y + $j * $!tileheight, $renderer));
 			   $i++;
 			  }
 		     }

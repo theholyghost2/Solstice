@@ -46,11 +46,11 @@ class Solstice::Tilemap2 is Solstice::Tilemap {
 		    	
 		    	if ($el == $!tileid1) {
 			   ### FIXME diagonal x, y
-			   @!tiles[$j].push(Solstice::OchreFloorDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
+			   @!tiles[$j].push(Solstice::OchreFloorDiamond(self.x + $i * $!tilewidth, self.y + $j * $!tileheight, $renderer));
 			   $i++;
 			  } elsif ($el == $!tileid2) {
 			   ### FIXME diagonal x, y
-			   @!tiles[$j].push(Solstice::OchreSlabDiamond($i * $!tilewidth, $j * $!tileheight, $renderer));
+			   @!tiles[$j].push(Solstice::OchreSlabDiamond(self.x + $i * $!tilewidth, self.y + $j * $!tileheight, $renderer));
 			   $i++;
 			  }
 		     }
