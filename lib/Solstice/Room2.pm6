@@ -2,6 +2,8 @@ use Solstice::Room;
 
 use SDL2::Raw;
 
+use Solstice::Goon1;
+
 class Solstice::Room2 is Solstice::Room {
 
 
@@ -9,9 +11,9 @@ class Solstice::Room2 is Solstice::Room {
 	has $!y;
 	has $!background-image;
 
-       submethod BUILD($window) {
+       submethod BUILD() {
       		$!background-image = SDL2::Raw::SDL_LoadBMP("../../images/bg-room-2.bmp");	
-		### FIXME self.addEntity();
+		self.addEntity(Solstice::Goon1(100,100,48,48,0));
 
 	}
 

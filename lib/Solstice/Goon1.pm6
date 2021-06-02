@@ -12,5 +12,11 @@ class Solstice::Goon1 is Solstice::Entity {
 		self.zposition = $zpos;
 	}
 
+	multi method blit($renderer) {
+
+	}
+	multi method update() {
+
+	}
 }
       		

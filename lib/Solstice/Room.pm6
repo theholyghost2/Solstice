@@ -12,7 +12,10 @@ class Solstice::Room {
 	}
 
 	multi method blit($renderer) {
-	      $!tilemap.blit($renderer)
+	      $!tilemap.blit($renderer);
+	      for @!entities -> $e {
+		     $e.blit($renderer);
+		     }
 	}
 
 	### gets current collided tile
@@ -27,7 +30,9 @@ class Solstice::Room {
 	}
 
         multi method update() {
-
+	      for @!entities -> $e {
+		     $e.update();
+		     }
 	}
 
 }

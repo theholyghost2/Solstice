@@ -16,5 +16,12 @@ class Solstice::Entity {
 		$!zposition = $zpos;
 	}
 
+	multi method blit($renderer) {
+
+	}
+
+	multi method update() {
+
+	}
 }
       		

@@ -18,6 +18,8 @@ class Solstice::SDL2MainLoop is Solstice::MainLoop {
 		$!shadax = Solstice::Shadax.new(100,100,24,24,$renderer);
 	}
 
+      ### compiler pattern for the main loop
+      ### update and blit everything
       multi method loopOnce($renderer) {
       	    $!currentroom.update();
       	    $!currentroom.blit($renderer);
