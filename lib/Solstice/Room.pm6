@@ -1,9 +1,14 @@
 class Solstice::Room {
 
       has $!tilemap;
-
+      has @!entities;
+ 
        submethod BUILD() {
       		
+	}
+
+       multi method addEntity($e) {
+		@!entities.push($e);
 	}
 
 	multi method blit($renderer) {

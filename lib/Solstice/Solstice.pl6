@@ -19,6 +19,7 @@ enum GAME_KEYS (
 );
 
 my %down_keys;
+my $direction = "left";
 
 SDL_Init(VIDEO);
 
@@ -73,13 +74,13 @@ while SDL_PollEvent($event) {
 				if ($comm == K_ESCAPE) {
 					exit();
 				} elsif ($comm == K_LEFT) {
-			   		$mainloop.movePlayerLeft();
+			   		$direction = "left";
 				} elsif ($comm == K_RIGHT) {
-                                        $mainloop.movePlayerRight();
+			   		$direction = "right";
                                 } elsif ($comm == K_UP) {
-                                        $mainloop.movePlayerUp();
+			   		$direction = "up";
                                 } elsif ($comm == K_DOWN) {
-                                        $mainloop.movePlayerDown();
+			   		$direction = "down";
                                 }
 				#$!shadax = Solstice::JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
                            	#$!shadax.jump();
@@ -105,7 +106,15 @@ while SDL_PollEvent($event) {
 ######my $img = SDL2::Raw::IMG_LoadTexture($renderer, "../../images/ochre-floor-tile-1.png");
 ######SDL2::Raw::SDL_SetColorKey($img, SDL2::Raw::SDL_TRUE, (255,255,255));
 
-
+if ($direction === "left") {
+      $mainloop.movePlayerLeft();
+} elsif ($direction === "right") {
+      $mainloop.movePlayerRight();
+} elsif ($direction === "up") {
+      $mainloop.movePlayerUp();
+} elsif ($direction === "down") {
+      $mainloop.movePlayerDown();
+}
 $mainloop.loopOnce();
 render();
 
