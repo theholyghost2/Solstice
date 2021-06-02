@@ -14,4 +14,8 @@ class Solstice::Room1 is Solstice::Room {
 	      self.tilemap.blit($renderer);
 	}
 
+        multi method update() {
+
+	}
+
 }

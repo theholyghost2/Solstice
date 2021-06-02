@@ -16,7 +16,7 @@ class Solstice::Shadax is Solstice::Entity {
       has $!upmoveimageslib;
       has $!downmoveimageslib;
 
-      submethod BUILD(:$x, :$y, :$w, :$h,) {
+      submethod BUILD(:$x, :$y, :$w, :$h, :$renderer) {
       		self.x = $x;
 		self.y = $y;
 
@@ -32,6 +32,13 @@ class Solstice::Shadax is Solstice::Entity {
 		$!upmoveimageslib = Solstice::ImageLoopLibrary();
 		$!downmoveimageslib = Solstice::ImageLoopLibrary();
 		### FIXME add images to image loop libs
+		
+		my $img = SDL2::Raw::SDL_LoadBMP("../../images/wizard1.bmp");
+		my $image = SDL2::Raw::SDL_CreateTextureFromSurface($renderer, $img);
+		$!leftmoveimageslib.addImage($image);
+		$!rightmoveimageslib.addImage($image);
+		$!upmoveimageslib.addImage($image);
+		$!downmoveimageslib.addImage($image);
 	}
 
 	### main colliding method
@@ -90,25 +97,28 @@ class Solstice::Shadax is Solstice::Entity {
 	multi method jump() {} ### FIXME
 	multi method magiccrystal() {} ### FIXME
 
-	multi method blit(:$renderer) {
-	      ### FIXME blit things on x,y
+	multi method blit($renderer) {
+	      my $destrect = SDL2::Raw::SDL_Rect.new(self.x, self.y + self.zposition, self.width, self.height); ### NOTE + $zposition
 
-	      #my $destrect = SDL2::Raw::SDL_Rect.new(self.x, self.y + self.zposition, self.width, self.height); ### NOTE + $zpos
-
-	      #if ($!lastmove.^name == 'LeftMove') {
-	      #	 my $image = $!leftmoveimageslib.getImage();
-		 ###SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      #}	elsif ($!lastmove.^name == 'RightMove') {
-	      #	 my $image = $!rightmoveimageslib.getImage();
-		 ###SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      #} elsif ($!lastmove.^name == 'UpMove') {
-	      #	 my $image = $!upmoveimageslib.getImage();
-		 ###SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      #} elsif ($!lastmove.^name == 'DownMove') {
-	      #	 my $image = $!downmoveimageslib.getImage();
-		 ###SDL2::Raw::SDL_RenderCopy($!renderer, $image, 0, $destrect);
-	      #}
+	      if ($!lastmove.^name == 'LeftMove') {
+	      	 my $image = $!leftmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($renderer, $image, 0, $destrect);
+	      }	elsif ($!lastmove.^name == 'RightMove') {
+	      	 my $image = $!rightmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($renderer, $image, 0, $destrect);
+	      } elsif ($!lastmove.^name == 'UpMove') {
+	      	 my $image = $!upmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($renderer, $image, 0, $destrect);
+	      } elsif ($!lastmove.^name == 'DownMove') {
+	      	 my $image = $!downmoveimageslib.getImage();
+		 SDL2::Raw::SDL_RenderCopy($renderer, $image, 0, $destrect);
+	      }
 
 	}
+
+        multi method update() {
+
+	}
+
 }
       		

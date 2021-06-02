@@ -55,7 +55,7 @@ my @times;
 my $event = SDL_Event.new;
 my num $df = 0.0001e0;
 
-my $mainloop = Solstice::SDL2MainLoop();
+my $mainloop = Solstice::SDL2MainLoop($renderer);
 
 main: loop {
         my $start = nqp::time_n();
@@ -115,7 +115,7 @@ if ($direction === "left") {
 } elsif ($direction === "down") {
       $mainloop.movePlayerDown();
 }
-$mainloop.loopOnce();
+$mainloop.loopOnce($renderer);
 render();
 
 @times.push: nqp::time_n() - $start;

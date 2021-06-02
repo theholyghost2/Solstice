@@ -26,5 +26,10 @@ class Solstice::JumpingShadax is Solstice::Shadax {
 
 	multi method jump() {} ### FIXME
 	multi method magiccrystal() {} ### FIXME 
+
+        multi method update() {
+
+	}
+
 }
       		

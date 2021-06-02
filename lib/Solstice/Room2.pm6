@@ -24,4 +24,9 @@ class Solstice::Room2 is Solstice::Room {
         multi method update() {
 
 	}
+
+	### gets current collided tile
+	multi method collideShadax($shadax) {
+	    return Nil;
+	}
 }

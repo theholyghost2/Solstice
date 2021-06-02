@@ -25,4 +25,9 @@ class Solstice::Room {
 	          return $currentcollidedtile;
 	      }
 	}
+
+        multi method update() {
+
+	}
+
 }

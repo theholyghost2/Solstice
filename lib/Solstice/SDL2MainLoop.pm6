@@ -11,15 +11,18 @@ class Solstice::SDL2MainLoop is Solstice::MainLoop {
       has $!shadax;
       has $!currentroom;
 
-      submethod BUILD() {
+      submethod BUILD($renderer) {
       		self.is_running = True;
 		
 		$!currentroom = Solstice::Room1.new();
-		$!shadax = Solstice::Shadax.new(100,100,24,24);
+		$!shadax = Solstice::Shadax.new(100,100,24,24,$renderer);
 	}
 
-      multi method loopOnce() {
-		
+      multi method loopOnce($renderer) {
+      	    $!currentroom.update();
+      	    $!currentroom.blit($renderer);
+	    $!shadax.update();
+	    $!shadax.blit($renderer);
       }
 
       multi method movePlayerLeft() {
