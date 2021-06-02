@@ -22,4 +22,20 @@ class Solstice::SDL2MainLoop is Solstice::MainLoop {
 		
       }
 
+      multi method movePlayerLeft() {
+	$!shadax.moveLeft();
+        $!shadax.collideRoom($!currentroom);
+      }
+      multi method movePlayerRight() {
+	$!shadax.moveRight();
+        $!shadax.collideRoom($!currentroom);
+      }
+      multi method movePlayerUp() {
+	$!shadax.moveUp();
+        $!shadax.collideRoom($!currentroom);
+      }
+      multi method movePlayerDown() {
+	$!shadax.moveDown();
+        $!shadax.collideRoom($!currentroom);
+      }
 }

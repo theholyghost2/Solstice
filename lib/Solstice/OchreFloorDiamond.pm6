@@ -13,7 +13,7 @@ class Solstice::OchreFloorDiamond is Solstice::FloorDiamond {
 
 		###my $tex = SDL_CreateTexture($renderer, %PIXELFORMAT<RGBA8888>+, TARGET, 96,48);
 
-		my $img = SDL2::Raw::IMG_Load("images/ochre-floor-tile-1.png");
+		my $img = SDL2::Raw::IMG_LoadBMP("images/ochre-floor-tile-1.bmp");
 		SDL2::Raw::SDL_SetColorKey($img, SDL2::Raw::SDL_TRUE, (255,255,255));	     
 		###self.image = SDL2::Raw::SDL_CreateTextureFromSurface($renderer, $img);
 	}

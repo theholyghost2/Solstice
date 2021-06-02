@@ -70,15 +70,19 @@ while SDL_PollEvent($event) {
                 when *.type == KEYDOWN {
                         if GAME_KEYS(.scancode) -> $comm {
                                 %down_keys{$comm} = 1;
-
 				if ($comm == K_ESCAPE) {
 					exit();
-				}
-
-			   ### $shadax.moveLeft();
-                           ### $shadax.collideRoom($!currentroom);
-#$!shadax = Solstice::JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
-                           #$!shadax.jump();
+				} elsif ($comm == K_LEFT) {
+			   		$mainloop.movePlayerLeft();
+				} elsif ($comm == K_RIGHT) {
+                                        $mainloop.movePlayerRight();
+                                } elsif ($comm == K_UP) {
+                                        $mainloop.movePlayerUp();
+                                } elsif ($comm == K_DOWN) {
+                                        $mainloop.movePlayerDown();
+                                }
+				#$!shadax = Solstice::JumpingShadax.new($!shadax.getX(),$!shadax.getY(),$!shadax.getWidth(),$!shadax.getHeight());
+                           	#$!shadax.jump();
                         }
                         CATCH { say $_ }
                 }

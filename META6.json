@@ -4,9 +4,9 @@
         "auth" : "CPAN:HOLYGHOST",
         "api" : "1",
         "version" : "0.1.1",
-        "description" : "A game written in perl6.",
+        "description" : "A Solstice game written in Raku.",
         "authors" : [ "The Holy Ghost" ],
-        "license" : "General Public License 3, Artistic-2.0",
+        "license" : "General Public License 2, Artistic-2.0",
         "provides" : {
             "Solstice::Controller" : "lib/Solstice/Controller.pm6",
             "Solstice::Diamond" : "lib/Solstice/Diamond.pm6",
@@ -22,6 +22,7 @@
             "Solstice::Model" : "lib/Solstice/Model.pm6",
             "Solstice::Move" : "lib/Solstice/Move.pm6",
             "Solstice::OchreFloorDiamond" : "lib/Solstice/OchreFloorDiamond.pm6",
+            "Solstice::OchreSlabDiamond" : "lib/Solstice/OchreSlabDiamond.pm6",
             "Solstice::RightMove" : "lib/Solstice/RightMove.pm6",
             "Solstice::Room" : "lib/Solstice/Room.pm6",
             "Solstice::Room1" : "lib/Solstice/Room1.pm6",
@@ -36,7 +37,7 @@
             "Solstice::UpMove" : "lib/Solstice/UpMove.pm6",
             "Solstice::View" : "lib/Solstice/View.pm6"
         },
-        "depends" : [ ],
+        "depends" : [ "SDL2::Raw" ],
         "build-depends" : [ ],
         "test-depends" : [ ],
         "resources" : [ ],
